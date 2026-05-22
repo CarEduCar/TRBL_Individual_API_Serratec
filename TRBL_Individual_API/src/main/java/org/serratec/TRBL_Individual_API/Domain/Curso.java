@@ -55,6 +55,14 @@ public class Curso {
 		this.descricaoCurso = curso.getDescricaoCurso();
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getNomeCurso() {
 		return nomeCurso;
 	}

@@ -56,12 +56,29 @@ public class TurmaService {
 		return new TurmaResponseDTO(turma);
 	}
 	
-	public TurmaResponseDTO buscarTurmaPorId(String codigo) {
+	public TurmaResponseDTO buscarTurmaPorCodigo(String codigo) {
 		
 		Turma turma = turmaRepo.findBycodigoTurma(codigo)
 				.orElseThrow(() -> new ValorNaoEncontradoException("Não existe nenhuma turma com o codigo " + codigo));
 		
 		return new TurmaResponseDTO(turma);
+	}
+	
+	public List<TurmaResponseDTO> criarTurmas(List<TurmaRequestDTO> turmasReq) {
+		List<Turma> turmaPraSalvar = new ArrayList<>();
+		List<TurmaResponseDTO> turmasDTO = new ArrayList<TurmaResponseDTO>();
+		
+		for(TurmaRequestDTO turmaDTO : turmasReq) {
+			turmaPraSalvar.add(new Turma(turmaDTO));
+		}
+		
+		List<Turma> turmasSalvos = turmaRepo.saveAll(turmaPraSalvar);
+		
+		for(Turma turma : turmasSalvos) {
+			turmasDTO.add(new TurmaResponseDTO(turma));
+		}
+		
+		return turmasDTO;	
 	}
 	
 	public TurmaResponseDTO atualizarTurma(Integer id, TurmaRequestDTO turmaDTO) {

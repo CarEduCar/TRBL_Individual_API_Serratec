@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.serratec.TRBL_Individual_API.Domain.Curso;
+import org.serratec.TRBL_Individual_API.Domain.Turma;
 import org.serratec.TRBL_Individual_API.Exception.ValorNaoEncontradoException;
 import org.serratec.TRBL_Individual_API.Repository.CursoRepository;
 import org.serratec.TRBL_Individual_API.RequestDTO.CursoRequestDTO;
+import org.serratec.TRBL_Individual_API.RequestDTO.TurmaRequestDTO;
 import org.serratec.TRBL_Individual_API.ResponseDTO.CursoResponseDTO;
+import org.serratec.TRBL_Individual_API.ResponseDTO.TurmaResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +50,23 @@ public class CursoService {
 				.orElseThrow(() -> new ValorNaoEncontradoException("Não existe nenhum curso com o nome " + nomeCurso));
 		
 		return new CursoResponseDTO(curso);
+	}
+	
+	public List<CursoResponseDTO> criarCursos(List<CursoRequestDTO> CursosReq) {
+		List<Curso> cursoPraSalvar = new ArrayList<>();
+		List<CursoResponseDTO> CursosDTO = new ArrayList<CursoResponseDTO>();
+		
+		for(CursoRequestDTO cursoDTO : CursosReq) {
+			cursoPraSalvar.add(new Curso(cursoDTO));
+		}
+		
+		List<Curso> CursosSalvos = cursoRepo.saveAll(cursoPraSalvar);
+		
+		for(Curso curso : CursosSalvos) {
+			CursosDTO.add(new CursoResponseDTO(curso));
+		}
+		
+		return CursosDTO;	
 	}
 	
 	

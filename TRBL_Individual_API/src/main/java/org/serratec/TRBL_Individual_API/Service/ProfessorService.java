@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.serratec.TRBL_Individual_API.Domain.Professor;
+import org.serratec.TRBL_Individual_API.Domain.Professor;
 import org.serratec.TRBL_Individual_API.Exception.ValorNaoEncontradoException;
 import org.serratec.TRBL_Individual_API.Repository.ProfessorRepository;
 import org.serratec.TRBL_Individual_API.RequestDTO.ProfessorRequestDTO;
+import org.serratec.TRBL_Individual_API.RequestDTO.ProfessorRequestDTO;
+import org.serratec.TRBL_Individual_API.ResponseDTO.ProfessorResponseDTO;
 import org.serratec.TRBL_Individual_API.ResponseDTO.ProfessorResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,9 +38,26 @@ public class ProfessorService {
 	public ProfessorResponseDTO buscarProfessorPorId(Integer id) {
 		Professor professor = profRepo.findById(id)
 				.orElseThrow(() -> new ValorNaoEncontradoException("Não existe nenhum Professor com id "+ id));
-	
+ 
 		ProfessorResponseDTO professorDTO = new ProfessorResponseDTO(professor);
 		return professorDTO;
+	}
+	
+	public List<ProfessorResponseDTO> criarProfessors(List<ProfessorRequestDTO> professoresReq) {
+		List<Professor> professoresPraSalvar = new ArrayList<>();
+		List<ProfessorResponseDTO> professoresDTO = new ArrayList<ProfessorResponseDTO>();
+		
+		for(ProfessorRequestDTO professorDTO : professoresReq) {
+			professoresPraSalvar.add(new Professor(professorDTO));
+		}
+		
+		List<Professor> professoresSalvos = profRepo.saveAll(professoresPraSalvar);
+		
+		for(Professor professor : professoresSalvos) {
+			professoresDTO.add(new ProfessorResponseDTO(professor));
+		}
+		
+		return professoresDTO;	
 	}
 	
 public ProfessorResponseDTO atualizarProfessor(Integer id, ProfessorRequestDTO professorDTO) {
