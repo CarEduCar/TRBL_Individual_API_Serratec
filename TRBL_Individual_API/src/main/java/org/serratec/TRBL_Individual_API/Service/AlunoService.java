@@ -25,6 +25,9 @@ public class AlunoService {
 			alunosDTO.add(new AlunoResponseDTO(aluno));
 		}
 		
+		if(alunosDTO.isEmpty()) {
+			throw new ValorNaoEncontradoException("Nenhum aluno cadastro!");
+		}	
 		return alunosDTO;
 	}
 	
