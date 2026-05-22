@@ -33,6 +33,10 @@ public class Aluno {
 	
 	@OneToOne(mappedBy = "aluno")
 	private PerfilSocial perfil;
+	
+	@NotBlank(message= "Endereço é obrigatorio!") @Size(max = 100, message = "A quantidade de caracteres deve ser no máximo 100")
+	@Column(name = "endereco", nullable = false, length = 100)
+	private String endereco;
 
 	protected Aluno() {
 		super();

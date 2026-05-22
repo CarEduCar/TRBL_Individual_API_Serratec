@@ -3,6 +3,8 @@ package org.serratec.TRBL_Individual_API.Domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -31,7 +33,8 @@ public class Turma {
 	private Integer id;
 	
 	@NotBlank(message= "Código é obrigatorio!") @Size(max = 20, message = "A quantidade de caracteres deve ser no máximo 20")
-	@Column(name = "codigo_turma", nullable = false, length = 20)
+	@UniqueElements
+	@Column(name = "codigo_turma", nullable = false, length = 20, unique = true)
 	private String codigoTurma;
 	
 	@Column(name = "data_inicio")
