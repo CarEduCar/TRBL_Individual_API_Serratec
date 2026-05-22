@@ -27,7 +27,7 @@ public class PerfilSocial {
 	@MapsId
 	@OneToOne
 	@JoinColumn(name = "id_aluno")
-	private Integer aluno;
+	private Aluno aluno;
 	
 	@NotBlank(message= "Classe Social é obrigatoria!") @Size(max = 60, message = "A quantidade de caracteres deve ser no máximo 60")
 	@Column(name = "classe_social", nullable = false, length = 60)
@@ -43,7 +43,6 @@ public class PerfilSocial {
 	}
 	
 	public PerfilSocial(PerfilSocialRequestDTO perfil) {
-		this.aluno = perfil.getIdAluno();
 		this.classeSocial = perfil.getClasseSocial();
 		this.renda = perfil.getRenda();
 	}
@@ -56,11 +55,11 @@ public class PerfilSocial {
 		this.id = id;
 	}
 
-	public Integer getAluno() {
+	public Aluno getAluno() {
 		return aluno;
 	}
 
-	public void setAluno(Integer aluno) {
+	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 	}
 

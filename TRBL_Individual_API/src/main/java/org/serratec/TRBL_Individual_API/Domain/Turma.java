@@ -54,17 +54,17 @@ public class Turma {
 	@ManyToMany @JoinTable(name = "aluno_turma_matriculado",
 	joinColumns = @JoinColumn(name = "id_turma"),
 	inverseJoinColumns = @JoinColumn(name = "id_aluno"))
-	private List<Integer> alunos;
+	private List<Aluno> aluno;
 	
 	@ManyToOne
 	@NotNull(message = "A turma deve ter um professor!")
 	@JoinColumn(name = "id_professor")
-	private Integer professor;
+	private Professor professor;
 	
 	@ManyToOne
 	@NotNull(message = "A turma deve pertencer a um curso!")
 	@JoinColumn(name = "id_curso")
-	private Integer curso;
+	private Curso curso;
 
 	public Turma() {
 		super();
@@ -75,9 +75,6 @@ public class Turma {
 		this.dataInicio = turma.getDataInicio();
 		this.dataFim = turma.getDataFim();
 		this.tamanho = turma.getTamanho();
-		this.alunos = turma.getIdAlunos();
-		this.professor = turma.getIdProfessor();
-		this.curso = turma.getIdCurso();
 	}
 
 	public Integer getId() {
@@ -120,27 +117,27 @@ public class Turma {
 		this.tamanho = tamanho;
 	}
 
-	public List<Integer> getAlunos() {
-		return alunos;
+	public List<Aluno> getAlunos() {
+		return aluno;
 	}
 
-	public void setAlunos(List<Integer> alunos) {
-		this.alunos = alunos;
+	public void setAlunos(List<Aluno> alunos) {
+		this.aluno = alunos;
 	}
 
-	public Integer getProfessor() {
+	public Professor getProfessor() {
 		return professor;
 	}
 
-	public void setProfessor(Integer professor) {
+	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
 
-	public @NotNull(message = "A turma deve pertencer a um curso!") Integer getCurso() {
+	public Curso getCurso() {
 		return curso;
 	}
 
-	public void setCurso(Integer curso) {
+	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
 	

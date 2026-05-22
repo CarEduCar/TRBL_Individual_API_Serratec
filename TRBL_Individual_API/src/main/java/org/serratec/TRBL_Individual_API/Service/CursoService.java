@@ -59,7 +59,7 @@ public class CursoService {
 		curso.setDataInicio(cursoDTO.getDataInicio());
 		curso.setDataFim(cursoDTO.getDataFim());
 		curso.setDescricaoCurso(cursoDTO.getDescricaoCurso());
-		
+
 		
 		Curso cursoAtualizado = cursoRepo.save(curso);
 		

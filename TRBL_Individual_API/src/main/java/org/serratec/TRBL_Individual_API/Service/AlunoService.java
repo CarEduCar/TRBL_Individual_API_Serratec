@@ -2,10 +2,13 @@ package org.serratec.TRBL_Individual_API.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.serratec.TRBL_Individual_API.Domain.Aluno;
+import org.serratec.TRBL_Individual_API.Domain.PerfilSocial;
 import org.serratec.TRBL_Individual_API.Exception.ValorNaoEncontradoException;
 import org.serratec.TRBL_Individual_API.Repository.AlunoRepository;
+import org.serratec.TRBL_Individual_API.Repository.PerfilSocialRepository;
 import org.serratec.TRBL_Individual_API.RequestDTO.AlunoRequestDTO;
 import org.serratec.TRBL_Individual_API.ResponseDTO.AlunoResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,9 @@ public class AlunoService {
 	
 	@Autowired
 	private AlunoRepository alunoRepo;
+	
+	@Autowired
+	private PerfilSocialRepository perfilRepo;
 	
 	public List<AlunoResponseDTO> buscarTodosAlunos(){
 		

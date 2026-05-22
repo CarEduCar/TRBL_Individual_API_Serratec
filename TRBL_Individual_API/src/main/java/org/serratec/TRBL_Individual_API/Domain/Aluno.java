@@ -39,7 +39,7 @@ public class Aluno {
 	@OneToOne(mappedBy = "aluno")
 	private PerfilSocial perfil;
 	
-	@ManyToMany(mappedBy = "alunos")
+	@ManyToMany(mappedBy = "aluno")
     private List<Turma> turmas = new ArrayList<>();
 
 	public List<Turma> getTurmas() {
