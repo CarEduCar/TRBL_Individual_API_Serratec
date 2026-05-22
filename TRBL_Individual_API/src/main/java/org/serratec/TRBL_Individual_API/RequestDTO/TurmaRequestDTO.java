@@ -36,6 +36,41 @@ public class TurmaRequestDTO {
 	public TurmaRequestDTO() {
 		super();
 	}
+	
+	public List<Integer> getIdAlunos() {
+		return idAlunos;
+	}
+
+
+	public void setIdAlunos(List<Integer> idAlunos) {
+		this.idAlunos = idAlunos;
+	}
+
+
+
+	public Integer getIdProfessor() {
+		return idProfessor;
+	}
+
+
+
+	public void setIdProfessor(Integer idProfessor) {
+		this.idProfessor = idProfessor;
+	}
+
+
+
+	public Integer getIdCurso() {
+		return idCurso;
+	}
+
+
+
+	public void setIdCurso(Integer idCurso) {
+		this.idCurso = idCurso;
+	}
+
+
 
 	public String getCodigoTurma() {
 		return codigoTurma;

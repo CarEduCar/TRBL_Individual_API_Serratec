@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.serratec.TRBL_Individual_API.RequestDTO.AlunoRequestDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -43,13 +45,18 @@ public class Aluno {
 	public List<Turma> getTurmas() {
 		return turmas;
 	}
+	
+	public Aluno() {
+		super();
+	}
+	
+	public Aluno(AlunoRequestDTO aluno) {
+		this.nomeAluno = aluno.getNome();
+		this.dataNasc = aluno.getDataNasc();
+	}
 
 	public void setTurmas(List<Turma> turmas) {
 		this.turmas = turmas;
-	}
-
-	public Aluno() {
-		super();
 	}
 
 	public Integer getId() {

@@ -3,6 +3,8 @@ package org.serratec.TRBL_Individual_API.Domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.serratec.TRBL_Individual_API.RequestDTO.CursoRequestDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,6 +46,13 @@ public class Curso {
 
 	public Curso() {
 		super();
+	}
+	
+	public Curso(CursoRequestDTO curso){
+		this.nomeCurso = curso.getNomeCurso();
+		this.dataInicio = curso.getDataInicio();
+		this.dataFim = curso.getDataFim();
+		this.descricaoCurso = curso.getDescricaoCurso();
 	}
 
 	public Integer getId() {

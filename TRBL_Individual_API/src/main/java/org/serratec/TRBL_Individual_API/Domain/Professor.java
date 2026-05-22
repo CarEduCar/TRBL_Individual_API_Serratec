@@ -3,6 +3,8 @@ package org.serratec.TRBL_Individual_API.Domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.serratec.TRBL_Individual_API.RequestDTO.ProfessorRequestDTO;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -40,6 +42,11 @@ public class Professor {
 
 	public Professor() {
 		super();
+	}
+	
+	public Professor(ProfessorRequestDTO professor) {
+		this.nomeProfessor = professor.getNomeProfessor();
+		this.dataNasc = professor.getDataNasc();
 	}
 
 	public Integer getId() {

@@ -6,6 +6,7 @@ import java.util.List;
 import org.serratec.TRBL_Individual_API.Domain.Aluno;
 import org.serratec.TRBL_Individual_API.Exception.ValorNaoEncontradoException;
 import org.serratec.TRBL_Individual_API.Repository.AlunoRepository;
+import org.serratec.TRBL_Individual_API.RequestDTO.AlunoRequestDTO;
 import org.serratec.TRBL_Individual_API.ResponseDTO.AlunoResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,13 +40,42 @@ public class AlunoService {
 		return alunoDTO;
 	}
 	
-	public List<AlunoResponseDTO> criarAlunos(List<AlunoResponseDTO> aluno) {
-		List<Aluno> alunos = new ArrayList<Aluno>();
+	public List<AlunoResponseDTO> criarAlunos(List<AlunoRequestDTO> alunosReq) {
+		List<Aluno> alunosPraSalvar = new ArrayList<>();
 		List<AlunoResponseDTO> alunosDTO = new ArrayList<AlunoResponseDTO>();
 		
-
+		for(AlunoRequestDTO alunoDTO : alunosReq) {
+			alunosPraSalvar.add(new Aluno(alunoDTO));
+		}
 		
-		return aluno;
+		List<Aluno> alunosSalvos = alunoRepo.saveAll(alunosPraSalvar);
+		
+		for(Aluno aluno : alunosSalvos) {
+			alunosDTO.add(new AlunoResponseDTO(aluno));
+		}
+		
+		return alunosDTO;	
+	}
+	
+	public AlunoResponseDTO atualizarAluno(Integer id, AlunoRequestDTO alunoDTO) {
+		
+		Aluno alunoExistente = alunoRepo.findById(id)
+				.orElseThrow(() -> new ValorNaoEncontradoException("Não existe nenhum aluno com o id " + id));
+		
+		alunoExistente.setNomeAluno(alunoDTO.getNome());
+		alunoExistente.setDataNasc(alunoDTO.getDataNasc());
+		
+		Aluno alunoAtualizado = alunoRepo.save(alunoExistente);
+		
+		return new AlunoResponseDTO(alunoAtualizado);
+	}
+	
+	public void deletarAluno(Integer id) {
+
+		Aluno alunoExistente = alunoRepo.findById(id)
+				.orElseThrow(() -> new ValorNaoEncontradoException("Não é possível deletar. Aluno com id " + id + " não encontrado."));
+
+		alunoRepo.delete(alunoExistente);
 	}
 	
 	

@@ -2,6 +2,8 @@ package org.serratec.TRBL_Individual_API.Domain;
 
 import java.math.BigDecimal;
 
+import org.serratec.TRBL_Individual_API.RequestDTO.PerfilSocialRequestDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -25,7 +27,7 @@ public class PerfilSocial {
 	@MapsId
 	@OneToOne
 	@JoinColumn(name = "id_aluno")
-	private Aluno aluno;
+	private Integer aluno;
 	
 	@NotBlank(message= "Classe Social é obrigatoria!") @Size(max = 60, message = "A quantidade de caracteres deve ser no máximo 60")
 	@Column(name = "classe_social", nullable = false, length = 60)
@@ -39,6 +41,12 @@ public class PerfilSocial {
 	public PerfilSocial() {
 		super();
 	}
+	
+	public PerfilSocial(PerfilSocialRequestDTO perfil) {
+		this.aluno = perfil.getIdAluno();
+		this.classeSocial = perfil.getClasseSocial();
+		this.renda = perfil.getRenda();
+	}
 
 	public Integer getId() {
 		return id;
@@ -48,11 +56,11 @@ public class PerfilSocial {
 		this.id = id;
 	}
 
-	public Aluno getAluno() {
+	public Integer getAluno() {
 		return aluno;
 	}
 
-	public void setAluno(Aluno aluno) {
+	public void setAluno(Integer aluno) {
 		this.aluno = aluno;
 	}
 
