@@ -35,4 +35,40 @@ public class PerfilSocial {
 	@DecimalMin(value = "0", message = "O valor não pode ser negativo!")
 	@Column(name = "renda", nullable = false, precision = 7, scale = 2)
 	private BigDecimal renda;
+
+	protected PerfilSocial() {
+		super();
+	}
+
+	protected Integer getId() {
+		return id;
+	}
+
+	protected void setId(Integer id) {
+		this.id = id;
+	}
+
+	protected Aluno getAluno() {
+		return aluno;
+	}
+
+	protected void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	protected String getClasseSocial() {
+		return classeSocial;
+	}
+
+	protected void setClasseSocial(String classeSocial) {
+		this.classeSocial = classeSocial;
+	}
+
+	protected BigDecimal getRenda() {
+		return renda;
+	}
+
+	protected void setRenda(BigDecimal renda) {
+		this.renda = renda;
+	}
 }

@@ -37,4 +37,40 @@ public class Professor {
 	@JsonIgnore
 	@OneToMany(mappedBy = "professor")
 	List<Turma> turmas;
+
+	protected Professor() {
+		super();
+	}
+
+	protected Integer getId() {
+		return id;
+	}
+
+	protected void setId(Integer id) {
+		this.id = id;
+	}
+
+	protected String getNomeProfessor() {
+		return nomeProfessor;
+	}
+
+	protected void setNomeProfessor(String nomeProfessor) {
+		this.nomeProfessor = nomeProfessor;
+	}
+
+	protected LocalDate getDataNasc() {
+		return dataNasc;
+	}
+
+	protected void setDataNasc(LocalDate dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+
+	protected List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	protected void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
 }

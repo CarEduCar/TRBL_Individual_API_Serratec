@@ -58,4 +58,73 @@ public class Turma {
 	@ManyToOne
 	@JoinColumn(name = "id_curso")
 	private Curso curso;
+
+	protected Turma() {
+		super();
+	}
+
+	protected Integer getId() {
+		return id;
+	}
+
+	protected void setId(Integer id) {
+		this.id = id;
+	}
+
+	protected String getCodigoTurma() {
+		return codigoTurma;
+	}
+
+	protected void setCodigoTurma(String codigoTurma) {
+		this.codigoTurma = codigoTurma;
+	}
+
+	protected LocalDate getDataInicio() {
+		return dataInicio;
+	}
+
+	protected void setDataInicio(LocalDate dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	protected LocalDate getDataFim() {
+		return dataFim;
+	}
+
+	protected void setDataFim(LocalDate dataFim) {
+		this.dataFim = dataFim;
+	}
+
+	protected Integer getTamanho() {
+		return tamanho;
+	}
+
+	protected void setTamanho(Integer tamanho) {
+		this.tamanho = tamanho;
+	}
+
+	protected List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	protected void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
+	protected Professor getProfessor() {
+		return professor;
+	}
+
+	protected void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	protected Curso getCurso() {
+		return curso;
+	}
+
+	protected void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+	
 }

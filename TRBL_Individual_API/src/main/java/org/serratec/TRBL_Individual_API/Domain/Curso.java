@@ -38,4 +38,56 @@ public class Curso {
 	
 	@OneToMany(mappedBy = "curso")
 	private List<Turma> turmas;
+
+	protected Curso() {
+		super();
+	}
+
+	protected Integer getId() {
+		return id;
+	}
+
+	protected void setId(Integer id) {
+		this.id = id;
+	}
+
+	protected String getNomeCurso() {
+		return nomeCurso;
+	}
+
+	protected void setNomeCurso(String nomeCurso) {
+		this.nomeCurso = nomeCurso;
+	}
+
+	protected LocalDate getDataInicio() {
+		return dataInicio;
+	}
+
+	protected void setDataInicio(LocalDate dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	protected LocalDate getDataFim() {
+		return dataFim;
+	}
+
+	protected void setDataFim(LocalDate dataFim) {
+		this.dataFim = dataFim;
+	}
+
+	protected String getDescricaoCurso() {
+		return descricaoCurso;
+	}
+
+	protected void setDescricaoCurso(String descricaoCurso) {
+		this.descricaoCurso = descricaoCurso;
+	}
+
+	protected List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	protected void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
 }

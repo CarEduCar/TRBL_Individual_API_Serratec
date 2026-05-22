@@ -33,4 +33,40 @@ public class Aluno {
 	
 	@OneToOne(mappedBy = "aluno")
 	private PerfilSocial perfil;
+
+	protected Aluno() {
+		super();
+	}
+
+	protected Integer getId() {
+		return id;
+	}
+
+	protected void setId(Integer id) {
+		this.id = id;
+	}
+
+	protected String getNomeAluno() {
+		return nomeAluno;
+	}
+
+	protected void setNomeAluno(String nomeAluno) {
+		this.nomeAluno = nomeAluno;
+	}
+
+	protected LocalDate getDataNasc() {
+		return dataNasc;
+	}
+
+	protected void setDataNasc(LocalDate dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+
+	protected PerfilSocial getPerfil() {
+		return perfil;
+	}
+
+	protected void setPerfil(PerfilSocial perfil) {
+		this.perfil = perfil;
+	}	
 }
