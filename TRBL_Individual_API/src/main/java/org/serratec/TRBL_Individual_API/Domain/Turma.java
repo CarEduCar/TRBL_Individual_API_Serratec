@@ -66,7 +66,7 @@ public class Turma {
 	}
 	
 	public Turma(TurmaRequestDTO turma) {
-		this.codigoTurma = turma.getCodigoTurma();
+		this.codigoTurma = turma.getCodigo();
 		this.dataInicio = turma.getDataInicio();
 		this.dataFim = turma.getDataFim();
 		this.tamanho = turma.getTamanho();

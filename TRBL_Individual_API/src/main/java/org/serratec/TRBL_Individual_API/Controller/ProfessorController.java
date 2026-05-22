@@ -70,8 +70,8 @@ public class ProfessorController {
 		})
 	
 	@PostMapping()
-	public ResponseEntity<List<ProfessorResponseDTO>> CriarProfessor(@RequestBody List<ProfessorRequestDTO> professor){
-		List<ProfessorResponseDTO> professoresDTO = service.criarProfessors(professor);
+	public ResponseEntity<List<ProfessorResponseDTO>> CriarProfessor(@RequestBody List<ProfessorRequestDTO> Professor){
+		List<ProfessorResponseDTO> professoresDTO = service.criarProfessores(Professor);
 		return ResponseEntity.status(HttpStatus.CREATED).body(professoresDTO);
 	}
 	

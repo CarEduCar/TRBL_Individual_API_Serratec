@@ -72,7 +72,8 @@ public class ProfessorService {
 			@ApiResponse(responseCode = "400", description = "Erro de validação (ex: nome em branco ou dados mal formatados no JSON).")
 		})
 	
-	public List<ProfessorResponseDTO> criarProfessors(List<ProfessorRequestDTO> professoresReq) {
+	
+	public List<ProfessorResponseDTO> criarProfessores(List<ProfessorRequestDTO> professoresReq) {
 		List<Professor> professoresPraSalvar = new ArrayList<>();
 		List<ProfessorResponseDTO> professoresDTO = new ArrayList<ProfessorResponseDTO>();
 		
@@ -91,7 +92,7 @@ public class ProfessorService {
 	
 	@Operation(
 			summary = "Atualiza os dados de um professor", 
-			description = "Substitui as informações de um aluno existente pelos novos dados fornecidos no corpo da requisição."
+			description = "Substitui as informações de um professor existente pelos novos dados fornecidos no corpo da requisição."
 		)
 		@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "professor atualizado com sucesso."),
@@ -104,7 +105,7 @@ public ProfessorResponseDTO atualizarProfessor(Integer id, ProfessorRequestDTO p
 		Professor professor = profRepo.findById(id)
 				.orElseThrow(() -> new ValorNaoEncontradoException("Não existe nenhum professor com o id " + id));
 		
-		professor.setNomeProfessor(professorDTO.getNomeProfessor());
+		professor.setNome(professorDTO.getNome());
 		professor.setDataNasc(professorDTO.getDataNasc());
 		
 		Professor professorAtualizado = profRepo.save(professor);
@@ -114,7 +115,7 @@ public ProfessorResponseDTO atualizarProfessor(Integer id, ProfessorRequestDTO p
 
 	@Operation(
 		summary = "Remove um professor do sistema", 
-		description = "Deleta permanentemente um aluno do banco de dados utilizando o seu ID. Retorna um status 204 (Sem conteúdo) em caso de sucesso."
+		description = "Deleta permanentemente um professor do banco de dados utilizando o seu ID. Retorna um status 204 (Sem conteúdo) em caso de sucesso."
 	)
 	@ApiResponses(value = {
 		@ApiResponse(responseCode = "204", description = "professor deletado com sucesso."),

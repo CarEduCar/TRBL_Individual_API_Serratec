@@ -29,7 +29,7 @@ public class Professor {
 	private Integer id;
 	
 	@Column(name = "nome_professor", nullable = false, length = 80)
-	private String nomeProfessor;
+	private String nome;
 
 	@Column(name = "data_nasc", nullable = false)
 	private LocalDate dataNasc;
@@ -43,7 +43,7 @@ public class Professor {
 	}
 	
 	public Professor(ProfessorRequestDTO professor) {
-		this.nomeProfessor = professor.getNomeProfessor();
+		this.nome = professor.getNome();
 		this.dataNasc = professor.getDataNasc();
 	}
 
@@ -55,12 +55,12 @@ public class Professor {
 		this.id = id;
 	}
 
-	public String getNomeProfessor() {
-		return nomeProfessor;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeProfessor(String nomeProfessor) {
-		this.nomeProfessor = nomeProfessor;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public LocalDate getDataNasc() {

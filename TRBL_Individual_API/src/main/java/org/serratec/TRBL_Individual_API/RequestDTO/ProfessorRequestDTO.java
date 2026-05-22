@@ -23,11 +23,11 @@ public class ProfessorRequestDTO {
 		super();
 	}
 
-	public String getNomeProfessor() {
+	public String getNome() {
 		return nome;
 	}
 
-	public void setNomeProfessor(String nomeProfessor) {
+	public void setNome(String nomeProfessor) {
 		this.nome = nomeProfessor;
 	}
 

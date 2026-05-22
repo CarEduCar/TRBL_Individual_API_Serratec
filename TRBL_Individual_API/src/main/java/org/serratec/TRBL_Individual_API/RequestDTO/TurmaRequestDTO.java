@@ -17,7 +17,6 @@ public class TurmaRequestDTO {
 	
 	@Schema(description = "codigo da turma", example = "MAT2026.1")
 	@NotBlank(message= "Código é obrigatorio!") @Size(max = 20, message = "A quantidade de caracteres deve ser no máximo 20")
-	@UniqueElements
 	private String codigo;
 	
 	@Schema(description = "Data de inicio das aulas", example = "2004-05-20")
@@ -79,12 +78,12 @@ public class TurmaRequestDTO {
 
 
 
-	public String getCodigoTurma() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigoTurma(String codigoTurma) {
-		this.codigo = codigoTurma;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public LocalDate getDataInicio() {

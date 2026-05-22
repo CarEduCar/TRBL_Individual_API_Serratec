@@ -17,7 +17,7 @@ public class ProfessorResponseDTO {
 	public ProfessorResponseDTO(Professor professor) {
 
 		this.id = professor.getId();	
-		this.nome = professor.getNomeProfessor();
+		this.nome = professor.getNome();
 	}
 	
 	public Integer getId() {

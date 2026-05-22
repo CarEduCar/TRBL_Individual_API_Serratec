@@ -146,7 +146,7 @@ public class TurmaService {
 				
 		List<Aluno> alunos= alunoRepo.findAllById(turmaDTO.getIdAlunos());
 		
-		turma.setCodigoTurma(turmaDTO.getCodigoTurma());
+		turma.setCodigoTurma(turmaDTO.getCodigo());
 		turma.setDataInicio(turmaDTO.getDataInicio());
 		turma.setDataFim(turmaDTO.getDataFim());
 		turma.setTamanho(turmaDTO.getTamanho());

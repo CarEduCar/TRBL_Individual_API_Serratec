@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.websocket.server.PathParam;
 
 @RestController
 @Validated
@@ -94,7 +94,7 @@ public class TurmaController {
 	
 	@Operation(
 			summary = "Atualiza os dados de uma turma", 
-			description = "Substitui as informações de um aluno existente pelos novos dados fornecidos no corpo da requisição."
+			description = "Substitui as informações de uma turma existente pelos novos dados fornecidos no corpo da requisição."
 		)
 		@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "turma atualizada com sucesso."),
@@ -103,14 +103,14 @@ public class TurmaController {
 		})
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<TurmaResponseDTO> AtualizarTurma(@RequestBody Integer id, TurmaRequestDTO turma){
+	public ResponseEntity<TurmaResponseDTO> AtualizarTurma(@PathVariable Integer id, @RequestBody TurmaRequestDTO turma){
 		TurmaResponseDTO Turma = service.atualizarTurma(id, turma);
 		return ResponseEntity.status(HttpStatus.OK).body(Turma);
 	}
 	
 	@Operation(
 			summary = "Remove uma turma do sistema", 
-			description = "Deleta permanentemente um aluno do banco de dados utilizando o seu ID. Retorna um status 204 (Sem conteúdo) em caso de sucesso."
+			description = "Deleta permanentemente uma turma do banco de dados utilizando o seu ID. Retorna um status 204 (Sem conteúdo) em caso de sucesso."
 		)
 		@ApiResponses(value = {
 			@ApiResponse(responseCode = "204", description = "turma deletada com sucesso."),
