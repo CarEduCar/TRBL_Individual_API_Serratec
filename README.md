@@ -52,3 +52,5 @@ Para rodar este projeto localmente, você precisará ter instalado em sua máqui
 1. Clone este repositório:
    ```bash
    git clone [https://github.com/SeuUsuario/TRBL_Individual_API.git](https://github.com/SeuUsuario/TRBL_Individual_API.git)
+
+Link Swagger: http://localhost:8080/swagger-ui/index.html#/
