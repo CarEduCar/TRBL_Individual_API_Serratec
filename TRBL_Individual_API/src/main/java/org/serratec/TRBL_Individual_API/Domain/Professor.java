@@ -38,39 +38,39 @@ public class Professor {
 	@OneToMany(mappedBy = "professor")
 	List<Turma> turmas;
 
-	protected Professor() {
+	public Professor() {
 		super();
 	}
 
-	protected Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	protected void setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	protected String getNomeProfessor() {
+	public String getNomeProfessor() {
 		return nomeProfessor;
 	}
 
-	protected void setNomeProfessor(String nomeProfessor) {
+	public void setNomeProfessor(String nomeProfessor) {
 		this.nomeProfessor = nomeProfessor;
 	}
 
-	protected LocalDate getDataNasc() {
+	public LocalDate getDataNasc() {
 		return dataNasc;
 	}
 
-	protected void setDataNasc(LocalDate dataNasc) {
+	public void setDataNasc(LocalDate dataNasc) {
 		this.dataNasc = dataNasc;
 	}
 
-	protected List<Turma> getTurmas() {
+	public List<Turma> getTurmas() {
 		return turmas;
 	}
 
-	protected void setTurmas(List<Turma> turmas) {
+	public void setTurmas(List<Turma> turmas) {
 		this.turmas = turmas;
 	}
 }

@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public class AlunoResponseDTO extends Aluno{
+public class AlunoResponseDTO{
 	
 	Integer id;
 	String nome;
@@ -18,6 +18,12 @@ public class AlunoResponseDTO extends Aluno{
 		super();
 	}
 	
+	public AlunoResponseDTO(Aluno aluno) {
+		
+		this.id = aluno.getId();
+		this.nome = aluno.getNomeAluno();
+	}
+
 	public Integer getId() {
 		return id;
 	}

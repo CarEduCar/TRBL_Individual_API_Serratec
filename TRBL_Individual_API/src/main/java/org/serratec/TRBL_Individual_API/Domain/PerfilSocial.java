@@ -37,39 +37,39 @@ public class PerfilSocial {
 	@Column(name = "renda", nullable = false, precision = 7, scale = 2)
 	private BigDecimal renda;
 
-	protected PerfilSocial() {
+	public PerfilSocial() {
 		super();
 	}
 
-	protected Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	protected void setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	protected Aluno getAluno() {
+	public Aluno getAluno() {
 		return aluno;
 	}
 
-	protected void setAluno(Aluno aluno) {
+	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 	}
 
-	protected String getClasseSocial() {
+	public String getClasseSocial() {
 		return classeSocial;
 	}
 
-	protected void setClasseSocial(String classeSocial) {
+	public void setClasseSocial(String classeSocial) {
 		this.classeSocial = classeSocial;
 	}
 
-	protected BigDecimal getRenda() {
+	public BigDecimal getRenda() {
 		return renda;
 	}
 
-	protected void setRenda(BigDecimal renda) {
+	public void setRenda(BigDecimal renda) {
 		this.renda = renda;
 	}
 }

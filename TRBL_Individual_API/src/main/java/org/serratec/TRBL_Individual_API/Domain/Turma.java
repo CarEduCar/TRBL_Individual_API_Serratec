@@ -62,71 +62,71 @@ public class Turma {
 	@JoinColumn(name = "id_curso")
 	private Curso curso;
 
-	protected Turma() {
+	public Turma() {
 		super();
 	}
 
-	protected Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	protected void setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	protected String getCodigoTurma() {
+	public String getCodigoTurma() {
 		return codigoTurma;
 	}
 
-	protected void setCodigoTurma(String codigoTurma) {
+	public void setCodigoTurma(String codigoTurma) {
 		this.codigoTurma = codigoTurma;
 	}
 
-	protected LocalDate getDataInicio() {
+	public LocalDate getDataInicio() {
 		return dataInicio;
 	}
 
-	protected void setDataInicio(LocalDate dataInicio) {
+	public void setDataInicio(LocalDate dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
-	protected LocalDate getDataFim() {
+	public LocalDate getDataFim() {
 		return dataFim;
 	}
 
-	protected void setDataFim(LocalDate dataFim) {
+	public void setDataFim(LocalDate dataFim) {
 		this.dataFim = dataFim;
 	}
 
-	protected Integer getTamanho() {
+	public Integer getTamanho() {
 		return tamanho;
 	}
 
-	protected void setTamanho(Integer tamanho) {
+	public void setTamanho(Integer tamanho) {
 		this.tamanho = tamanho;
 	}
 
-	protected List<Aluno> getAlunos() {
+	public List<Aluno> getAlunos() {
 		return alunos;
 	}
 
-	protected void setAlunos(List<Aluno> alunos) {
+	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
 	}
 
-	protected Professor getProfessor() {
+	public Professor getProfessor() {
 		return professor;
 	}
 
-	protected void setProfessor(Professor professor) {
+	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
 
-	protected Curso getCurso() {
+	public Curso getCurso() {
 		return curso;
 	}
 
-	protected void setCurso(Curso curso) {
+	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
 	

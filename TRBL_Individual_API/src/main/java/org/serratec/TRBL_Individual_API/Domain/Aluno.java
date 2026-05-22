@@ -38,39 +38,39 @@ public class Aluno {
 	@Column(name = "endereco", nullable = false, length = 100)
 	private String endereco;
 
-	protected Aluno() {
+	public Aluno() {
 		super();
 	}
 
-	protected Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	protected void setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	protected String getNomeAluno() {
+	public String getNomeAluno() {
 		return nomeAluno;
 	}
 
-	protected void setNomeAluno(String nomeAluno) {
+	public void setNomeAluno(String nomeAluno) {
 		this.nomeAluno = nomeAluno;
 	}
 
-	protected LocalDate getDataNasc() {
+	public LocalDate getDataNasc() {
 		return dataNasc;
 	}
 
-	protected void setDataNasc(LocalDate dataNasc) {
+	public void setDataNasc(LocalDate dataNasc) {
 		this.dataNasc = dataNasc;
 	}
 
-	protected PerfilSocial getPerfil() {
+	public PerfilSocial getPerfil() {
 		return perfil;
 	}
 
-	protected void setPerfil(PerfilSocial perfil) {
+	public void setPerfil(PerfilSocial perfil) {
 		this.perfil = perfil;
 	}	
 }
