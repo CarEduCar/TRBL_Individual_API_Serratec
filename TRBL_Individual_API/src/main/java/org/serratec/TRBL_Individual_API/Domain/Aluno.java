@@ -1,12 +1,15 @@
 package org.serratec.TRBL_Individual_API.Domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -34,9 +37,16 @@ public class Aluno {
 	@OneToOne(mappedBy = "aluno")
 	private PerfilSocial perfil;
 	
-	@NotBlank(message= "Endereço é obrigatorio!") @Size(max = 100, message = "A quantidade de caracteres deve ser no máximo 100")
-	@Column(name = "endereco", nullable = false, length = 100)
-	private String endereco;
+	@ManyToMany(mappedBy = "alunos")
+    private List<Turma> turmas = new ArrayList<>();
+
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
 
 	public Aluno() {
 		super();

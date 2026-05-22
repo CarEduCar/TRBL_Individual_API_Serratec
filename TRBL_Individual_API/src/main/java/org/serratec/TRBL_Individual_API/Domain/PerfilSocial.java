@@ -31,7 +31,6 @@ public class PerfilSocial {
 	@Column(name = "classe_social", nullable = false, length = 60)
 	private String classeSocial;
 	
-	
 	@NotNull(message= "Valor da renda é obrigatoria!")
 	@DecimalMin(value = "0", message = "O valor não pode ser negativo!")
 	@Column(name = "renda", nullable = false, precision = 7, scale = 2)

@@ -38,6 +38,7 @@ public class Turma {
 	private String codigoTurma;
 	
 	@Column(name = "data_inicio")
+	@NotNull(message = "A turma deve ter uma data de inicio!")
 	private LocalDate dataInicio;
 	
 	@Column(name = "data_fim")
@@ -55,10 +56,12 @@ public class Turma {
 	private List<Aluno> alunos;
 	
 	@ManyToOne
+	@NotNull(message = "A turma deve ter um professor!")
 	@JoinColumn(name = "id_professor")
 	private Professor professor;
 	
 	@ManyToOne
+	@NotNull(message = "A turma deve pertencer a um curso!")
 	@JoinColumn(name = "id_curso")
 	private Curso curso;
 
