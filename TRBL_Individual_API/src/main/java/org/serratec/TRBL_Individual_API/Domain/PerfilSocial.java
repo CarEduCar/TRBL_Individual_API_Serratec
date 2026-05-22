@@ -25,7 +25,7 @@ public class PerfilSocial {
 	@MapsId
 	@OneToOne
 	@JoinColumn(name = "id_aluno")
-	Aluno aluno;
+	private Aluno aluno;
 	
 	@NotBlank(message= "Classe Social é obrigatoria!") @Size(max = 60, message = "A quantidade de caracteres deve ser no máximo 60")
 	@Column(name = "classe_social", nullable = false, length = 60)

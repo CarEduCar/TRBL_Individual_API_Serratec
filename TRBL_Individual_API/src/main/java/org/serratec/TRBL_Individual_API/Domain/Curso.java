@@ -1,6 +1,7 @@
 package org.serratec.TRBL_Individual_API.Domain;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,5 +37,5 @@ public class Curso {
 	private String descricaoCurso;
 	
 	@OneToMany(mappedBy = "curso")
-	Turma turma;
+	private List<Turma> turmas;
 }

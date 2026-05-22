@@ -32,5 +32,5 @@ public class Aluno {
 	private LocalDate dataNasc;
 	
 	@OneToOne(mappedBy = "aluno")
-	PerfilSocial perfil;
+	private PerfilSocial perfil;
 }

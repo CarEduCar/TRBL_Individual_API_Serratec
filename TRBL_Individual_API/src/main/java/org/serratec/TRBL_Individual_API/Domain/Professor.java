@@ -3,6 +3,8 @@ package org.serratec.TRBL_Individual_API.Domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,6 +34,7 @@ public class Professor {
 	@Column(name = "data_nasc", nullable = false)
 	private LocalDate dataNasc;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "professor")
 	List<Turma> turmas;
 }

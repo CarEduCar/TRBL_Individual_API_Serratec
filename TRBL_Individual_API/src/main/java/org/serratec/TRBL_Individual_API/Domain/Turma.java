@@ -15,6 +15,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -39,8 +40,9 @@ public class Turma {
 	@Column(name = "data_fim")
 	private LocalDate dataFim;
 	
-	@NotNull(message= "O tamanho da turma é obrigatorio!") @Size(max = 20, message = "A quantidade de caracteres deve ser no máximo 20")
-	@Column(name = "tamanho_turma", nullable = false, length = 20)
+	@NotNull(message= "O tamanho da turma é obrigatorio!")
+	@Min(value = 1, message = "A turma deve ter no minimo 1 vaga")
+	@Column(name = "tamanho_turma", nullable = false)
 	private Integer tamanho;
 	
 	@JsonIgnore
@@ -52,4 +54,8 @@ public class Turma {
 	@ManyToOne
 	@JoinColumn(name = "id_professor")
 	private Professor professor;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_curso")
+	private Curso curso;
 }
