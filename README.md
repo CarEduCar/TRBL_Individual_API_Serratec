@@ -8,13 +8,13 @@
 ## 📖 Descrição do Projeto e Tema
 Este projeto é o Trabalho Individual desenvolvido para o programa de Residência em TIC/Software do **Serratec**. 
 
-O tema escolhido é um **Sistema de Gestão Escolar**, desenhado para centralizar e organizar o ambiente acadêmico. A API RESTful gerencia o ecossistema educacional completo, lidando com o cadastro de **Alunos** (e seus respectivos Perfis Sociais), **Professores**, **Cursos** e **Turmas**, incluindo os relacionamentos complexos entre essas entidades.
+O tema escolhido é foi **Plataforma de Cursos Comunitários**. A API RESTful gerencia o ecossistema educacional completo, lidando com o cadastro de **Alunos** (Com os perfis sociais onde mostram a situacao economica do aluno), **Professores**, **Cursos** e **Turmas**, incluindo os relacionamentos entre essas entidades.
 
 ---
 
 ## 🗂️ Arquitetura e Estrutura de Pacotes
 
-Para garantir a escalabilidade e a manutenção do código, o projeto foi rigorosamente estruturado em camadas de responsabilidade única:
+Conforme o modelo DTO o código foi separado em camadas para garantir maior segurança e organização.
 
 * **`Config`**: Contém as configurações globais do projeto. Aqui reside a classe `SwaggerConfig`, responsável por facilitar a documentação da API.
 * **`Controller`**: Principal entrada da API. Armazena os controllers que recebem as requisições HTTP, gerenciam as rotas e abrigam as anotações do Swagger.
@@ -42,14 +42,13 @@ Para garantir a escalabilidade e a manutenção do código, o projeto foi rigoro
 ## ⚙️ Instruções de Execução
 
 ### Pré-requisitos
-Para rodar este projeto localmente, você precisará ter instalado em sua máquina:
-* [JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) ou superior.
+Para rodar este projeto localmente, você precisa ter instalado:
+* [JDK 17] ou superior.
 * Uma IDE (Eclipse, IntelliJ IDEA ou VS Code).
 * PostgreSQL configurado e rodando localmente na porta `5432` (Pode ser necessário a alteração dependendo da sua configuração).
 * Postman (também é possível utilizar o Swagger).
 
-### Como Rodar
-1. Clone este repositório:
+repositório:
    ```bash
    git clone [https://github.com/SeuUsuario/TRBL_Individual_API.git](https://github.com/SeuUsuario/TRBL_Individual_API.git)
 
