@@ -5,16 +5,19 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.UniqueElements;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+@Schema(description = "classe DTO que é utilizada para criação de novas turmas")
+
 public class TurmaRequestDTO {
 
 	@NotBlank(message= "Código é obrigatorio!") @Size(max = 20, message = "A quantidade de caracteres deve ser no máximo 20")
 	@UniqueElements
-	private String codigoTurma;
+	private String codigo;
 	
 	@NotNull(message = "A turma deve ter uma data de inicio!")
 	private LocalDate dataInicio;
@@ -73,11 +76,11 @@ public class TurmaRequestDTO {
 
 
 	public String getCodigoTurma() {
-		return codigoTurma;
+		return codigo;
 	}
 
 	public void setCodigoTurma(String codigoTurma) {
-		this.codigoTurma = codigoTurma;
+		this.codigo = codigoTurma;
 	}
 
 	public LocalDate getDataInicio() {

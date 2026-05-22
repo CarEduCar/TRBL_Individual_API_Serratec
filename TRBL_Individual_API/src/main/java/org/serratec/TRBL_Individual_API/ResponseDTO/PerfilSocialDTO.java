@@ -4,6 +4,10 @@ import java.math.BigDecimal;
 
 import org.serratec.TRBL_Individual_API.Domain.PerfilSocial;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "classe DTO que é utilizada para retorno de valores com segurança")
+
 public class PerfilSocialDTO {
 	
 	public String classeSocial;

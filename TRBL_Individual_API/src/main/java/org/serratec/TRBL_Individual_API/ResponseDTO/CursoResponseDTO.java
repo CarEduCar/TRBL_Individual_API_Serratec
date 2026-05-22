@@ -1,7 +1,13 @@
 package org.serratec.TRBL_Individual_API.ResponseDTO;
 
 import java.time.LocalDate;
+
+
 import org.serratec.TRBL_Individual_API.Domain.Curso;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "classe DTO que é utilizada para retorno de valores com segurança")
 
 public class CursoResponseDTO {
 	

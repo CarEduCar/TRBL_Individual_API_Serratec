@@ -17,6 +17,10 @@ import org.serratec.TRBL_Individual_API.ResponseDTO.TurmaResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @Service
 public class TurmaService {
 	
@@ -31,6 +35,15 @@ public class TurmaService {
 	
 	@Autowired
 	private AlunoRepository alunoRepo;
+	
+	@Operation(
+			summary = "Lista todos as turmas", 
+			description = "Lista todos as turmas cadastrados no Banco. Caso não haja nenhuma turma cadastrada, retorna uma mensagem de erro"
+		)
+		@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Encontrou pelo menos uma turma e retorna todas as que achou"),
+			@ApiResponse(responseCode = "404", description = "Não encontrou nenhuma turma cadastrado")
+		})
 	
 	public List<TurmaResponseDTO> buscarTodasTurmas() {
 		
@@ -48,6 +61,16 @@ public class TurmaService {
 		return turmasDTO;
 	}
 	
+	@Operation(
+			summary = "Busca uma turma por id", 
+			description = "Recebe o codigo de uma turma na URL e retorna os dados detalhados. Se o id não existir, a operação é barrada."
+		)
+		@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "turma encontrada e retornado com sucesso."),
+			@ApiResponse(responseCode = "404", description = "turma não encontrada com o ID informado."),
+			@ApiResponse(responseCode = "400", description = "Tipo de dado inválido fornecido na URL (ex: uma letra no lugar de um número).")
+		})
+	
 	public TurmaResponseDTO buscarTurmaPorId(Integer id) {
 		
 		Turma turma = turmaRepo.findById(id)
@@ -56,6 +79,16 @@ public class TurmaService {
 		return new TurmaResponseDTO(turma);
 	}
 	
+	@Operation(
+			summary = "Busca uma turma por codigo", 
+			description = "Recebe o codigo de uma turma na URL e retorna os dados detalhados. Se o codigo não existir, a operação é barrada."
+		)
+		@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "turma encontrada e retornado com sucesso."),
+			@ApiResponse(responseCode = "404", description = "turma não encontrada com o codigo informado."),
+			@ApiResponse(responseCode = "400", description = "Tipo de dado inválido fornecido na URL (ex: uma letra no lugar de um número).")
+		})
+	
 	public TurmaResponseDTO buscarTurmaPorCodigo(String codigo) {
 		
 		Turma turma = turmaRepo.findBycodigoTurma(codigo)
@@ -63,6 +96,15 @@ public class TurmaService {
 		
 		return new TurmaResponseDTO(turma);
 	}
+	
+	@Operation(
+			summary = "Cadastra novas turmas", 
+			description = "Recebe uma lista de turmas (JSON) e salva todos de uma vez no banco de dados. Retorna a lista de turmas recém-criadas com seus respectivos IDs."
+		)
+		@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "turmas cadastradas com sucesso."),
+			@ApiResponse(responseCode = "400", description = "Erro de validação (ex: nome em branco ou dados mal formatados no JSON).")
+		})
 	
 	public List<TurmaResponseDTO> criarTurmas(List<TurmaRequestDTO> turmasReq) {
 		List<Turma> turmaPraSalvar = new ArrayList<>();
@@ -80,6 +122,16 @@ public class TurmaService {
 		
 		return turmasDTO;	
 	}
+	
+	@Operation(
+			summary = "Atualiza os dados de uma turma", 
+			description = "Substitui as informações de um aluno existente pelos novos dados fornecidos no corpo da requisição."
+		)
+		@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "turma atualizada com sucesso."),
+			@ApiResponse(responseCode = "404", description = "turma não encontrada com o ID informado."),
+			@ApiResponse(responseCode = "400", description = "Erro de validação nos dados enviados ou tipo inválido na URL.")
+		})
 	
 	public TurmaResponseDTO atualizarTurma(Integer id, TurmaRequestDTO turmaDTO) {
 		
@@ -106,6 +158,16 @@ public class TurmaService {
 		
 		return new TurmaResponseDTO(turmaAtualizado);
 	}
+	
+	@Operation(
+			summary = "Remove uma turma do sistema", 
+			description = "Deleta permanentemente um aluno do banco de dados utilizando o seu ID. Retorna um status 204 (Sem conteúdo) em caso de sucesso."
+		)
+		@ApiResponses(value = {
+			@ApiResponse(responseCode = "204", description = "turma deletada com sucesso."),
+			@ApiResponse(responseCode = "404", description = "Não é possível deletar, turma não encontrada com o ID informado."),
+			@ApiResponse(responseCode = "400", description = "Tipo de dado inválido fornecido na URL.")
+		})
 	
 	public void deletarTurma(Integer id) {
 

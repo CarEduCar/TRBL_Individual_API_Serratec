@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Handler de erro global, todos os erros são enviados para aqui onde serão executados")
+
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 	
