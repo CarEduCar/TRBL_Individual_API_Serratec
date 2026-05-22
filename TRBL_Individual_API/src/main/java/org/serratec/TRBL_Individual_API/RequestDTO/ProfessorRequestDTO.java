@@ -11,9 +11,11 @@ import jakarta.validation.constraints.Size;
 
 public class ProfessorRequestDTO {
 	
+	@Schema(description = "nome do professor", example = "Joao Roberto")
 	@NotBlank(message= "Nome é obrigatorio!") @Size(max = 80, message = "A quantidade de caracteres deve ser no máximo 80")
 	private String nome;
 	
+	@Schema(description = "data de nascimento do professor", example = "2004-05-10")
 	@NotNull(message= "Data de Nascimento é obrigatoria!")
 	private LocalDate dataNasc;
 

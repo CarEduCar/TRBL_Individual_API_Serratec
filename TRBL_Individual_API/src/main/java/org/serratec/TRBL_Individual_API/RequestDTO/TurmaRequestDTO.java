@@ -14,16 +14,20 @@ import jakarta.validation.constraints.Size;
 @Schema(description = "classe DTO que é utilizada para criação de novas turmas")
 
 public class TurmaRequestDTO {
-
+	
+	@Schema(description = "codigo da turma", example = "MAT2026.1")
 	@NotBlank(message= "Código é obrigatorio!") @Size(max = 20, message = "A quantidade de caracteres deve ser no máximo 20")
 	@UniqueElements
 	private String codigo;
 	
+	@Schema(description = "Data de inicio das aulas", example = "2004-05-20")
 	@NotNull(message = "A turma deve ter uma data de inicio!")
 	private LocalDate dataInicio;
 	
+	@Schema(description = "Data do fim das aulas", example = "2004-05-20")
 	private LocalDate dataFim;
 	
+	@Schema(description = "Quantidade maxima de alunos na turma", example = "30")
 	@NotNull(message= "O tamanho da turma é obrigatorio!")
 	@Min(value = 1, message = "A turma deve ter no minimo 1 vaga")
 	private Integer tamanho;

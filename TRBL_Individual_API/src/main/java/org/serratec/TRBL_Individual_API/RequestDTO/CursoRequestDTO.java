@@ -11,14 +11,18 @@ import jakarta.validation.constraints.Size;
 @Schema(description = "classe DTO que é utilizada para criação de novos cursos")
 
 public class CursoRequestDTO {
-
+	
+	@Schema(description = "nome do Curso", example = "Psicologo de Computadores")
 	@NotNull(message= "Nome é obrigatorio!") @Size(max = 80, message = "A quantidade de caracteres deve ser no máximo 80")
 	private String nome;
 	
+	@Schema(description = "Data do inicio do curso", example = "2004-05-20")
 	private LocalDate dataInicio;
 	
+	@Schema(description = "Data do fim do curso", example = "2004-05-20")
 	private LocalDate dataFim;
 	
+	@Schema(description = "Descricao do curso", example = "Curso focado em tecnologia e outras coisas")
 	@NotNull(message = "O curso deve ter uma descricao!")
 	private String descricaoCurso;
 
