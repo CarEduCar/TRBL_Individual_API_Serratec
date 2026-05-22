@@ -13,14 +13,11 @@ public class PerfilSocialRequestDTO {
 	private Integer idAluno;
 	
 	@NotBlank(message= "Classe Social é obrigatoria!") @Size(max = 60, message = "A quantidade de caracteres deve ser no máximo 60")
-	@NotNull
 	private String classeSocial;
-	
 	
 	@NotNull(message= "Valor da renda é obrigatoria!")
 	@DecimalMin(value = "0", message = "O valor não pode ser negativo!")
 	private BigDecimal renda;
-
 
 	public PerfilSocialRequestDTO() {
 		super();

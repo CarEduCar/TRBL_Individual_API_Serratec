@@ -26,9 +26,7 @@ public class Curso {
 	@Column(name = "id_curso")
 	private Integer id;
 	
-	@NotNull(message= "Nome é obrigatorio!") @Size(max = 80, message = "A quantidade de caracteres deve ser no máximo 80")
 	@Column(name = "nome_curso", nullable = false, length = 80)
-	@NotBlank(message = "Nome é obrigatorio")
 	private String nomeCurso;
 	
 	@Column(name = "data_inicio")
@@ -38,7 +36,6 @@ public class Curso {
 	private LocalDate dataFim;
 	
 	@Column(name = "descricao_curso")
-	@NotNull(message = "O curso deve ter uma descricao!")
 	private String descricaoCurso;
 	
 	@OneToMany(mappedBy = "curso")

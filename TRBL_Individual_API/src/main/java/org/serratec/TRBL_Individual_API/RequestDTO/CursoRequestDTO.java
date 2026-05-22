@@ -13,12 +13,10 @@ import jakarta.validation.constraints.Size;
 public class CursoRequestDTO {
 
 	@NotNull(message= "Nome é obrigatorio!") @Size(max = 80, message = "A quantidade de caracteres deve ser no máximo 80")
-	@NotBlank(message = "Nome é obrigatorio!")
 	private String nome;
 	
 	private LocalDate dataInicio;
 	
-	@Column(name = "data_fim")
 	private LocalDate dataFim;
 	
 	@NotNull(message = "O curso deve ter uma descricao!")

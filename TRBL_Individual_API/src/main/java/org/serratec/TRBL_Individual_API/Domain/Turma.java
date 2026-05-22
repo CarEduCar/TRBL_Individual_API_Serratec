@@ -32,21 +32,16 @@ public class Turma {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_turma")
 	private Integer id;
-	
-	@NotBlank(message= "Código é obrigatorio!") @Size(max = 20, message = "A quantidade de caracteres deve ser no máximo 20")
-	@UniqueElements
+
 	@Column(name = "codigo_turma", nullable = false, length = 20, unique = true)
 	private String codigoTurma;
 	
 	@Column(name = "data_inicio")
-	@NotNull(message = "A turma deve ter uma data de inicio!")
 	private LocalDate dataInicio;
 	
 	@Column(name = "data_fim")
 	private LocalDate dataFim;
 	
-	@NotNull(message= "O tamanho da turma é obrigatorio!")
-	@Min(value = 1, message = "A turma deve ter no minimo 1 vaga")
 	@Column(name = "tamanho_turma", nullable = false)
 	private Integer tamanho;
 	
