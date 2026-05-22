@@ -1,9 +1,20 @@
 package org.serratec.TRBL_Individual_API.DTO;
 
+import org.serratec.TRBL_Individual_API.Domain.Professor;
+
 public class ProfessorResponseDTO {
 	public Integer id;
 	public String nome;
 	
+	public ProfessorResponseDTO() {
+		super();
+	}
+
+	public ProfessorResponseDTO(Professor professor) {
+
+		this.id = professor.getId();	
+		this.nome = professor.getNomeProfessor();
+	}
 	
 	public Integer getId() {
 		return id;

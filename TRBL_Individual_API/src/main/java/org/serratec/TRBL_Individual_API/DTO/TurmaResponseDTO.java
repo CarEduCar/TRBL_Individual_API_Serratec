@@ -2,12 +2,26 @@ package org.serratec.TRBL_Individual_API.DTO;
 
 import java.time.LocalDate;
 
+import org.serratec.TRBL_Individual_API.Domain.Turma;
+
 public class TurmaResponseDTO {
 	public String codigo;
-	public LocalDate inicio;
-	public LocalDate fim;
+	public LocalDate dataInicio;
+	public LocalDate dataFim;
 	public Integer tamanho;
 	
+		
+	public TurmaResponseDTO() {
+		super();
+	}
+	
+	public TurmaResponseDTO(Turma turma) {
+		
+		this.codigo = turma.getCodigoTurma();
+		this.dataInicio = turma.getDataInicio();
+		this.dataFim = turma.getDataFim();
+		this.tamanho= turma.getTamanho();
+	}
 	
 	public String getCodigo() {
 		return codigo;
@@ -16,16 +30,16 @@ public class TurmaResponseDTO {
 		this.codigo = codigo;
 	}
 	public LocalDate getInicio() {
-		return inicio;
+		return dataInicio;
 	}
 	public void setInicio(LocalDate inicio) {
-		this.inicio = inicio;
+		this.dataInicio = inicio;
 	}
 	public LocalDate getFim() {
-		return fim;
+		return dataFim;
 	}
 	public void setFim(LocalDate fim) {
-		this.fim = fim;
+		this.dataFim = fim;
 	}
 	public Integer getTamanho() {
 		return tamanho;

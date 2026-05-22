@@ -26,7 +26,7 @@ public class AlunoService {
 		}
 		
 		if(alunosDTO.isEmpty()) {
-			throw new ValorNaoEncontradoException("Nenhum aluno cadastro!");
+			throw new ValorNaoEncontradoException("Nenhum aluno cadastro no sistema!");
 		}	
 		return alunosDTO;
 	}

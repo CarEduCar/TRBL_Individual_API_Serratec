@@ -1,21 +1,34 @@
 package org.serratec.TRBL_Individual_API.DTO;
 
 import java.time.LocalDate;
+import org.serratec.TRBL_Individual_API.Domain.Curso;
 
-public class CursoDTO {
+public class CursoResponseDTO {
 	
-	public String id;
-	public String nomeCurso;
+	public Integer id;
+	public String nome;
 	public LocalDate dataInicio;
 	public LocalDate dataFim;
-	public String descricaoCurso;
+	public String descricao;
 	
+	public CursoResponseDTO() {
+		super();
+	}
 	
+	public CursoResponseDTO(Curso curso) {
+		
+		this.id = curso.getId();
+		this.nome = curso.getNomeCurso();
+		this.dataInicio = curso.getDataInicio();
+		this.dataFim = curso.getDataFim();
+		this.descricao = curso.getDescricaoCurso();
+	}
+
 	public String getNomeCurso() {
-		return nomeCurso;
+		return nome;
 	}
 	public void setNomeCurso(String nomeCurso) {
-		this.nomeCurso = nomeCurso;
+		this.nome = nomeCurso;
 	}
 	public LocalDate getDataInicio() {
 		return dataInicio;
@@ -30,10 +43,10 @@ public class CursoDTO {
 		this.dataFim = dataFim;
 	}
 	public String getDescricaoCurso() {
-		return descricaoCurso;
+		return descricao;
 	}
 	public void setDescricaoCurso(String descricaoCurso) {
-		this.descricaoCurso = descricaoCurso;
+		this.descricao = descricaoCurso;
 	}
 	
 	

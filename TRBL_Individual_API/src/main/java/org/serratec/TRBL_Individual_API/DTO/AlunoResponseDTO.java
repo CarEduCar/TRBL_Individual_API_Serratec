@@ -1,13 +1,6 @@
 package org.serratec.TRBL_Individual_API.DTO;
 
-import java.time.LocalDate;
-
 import org.serratec.TRBL_Individual_API.Domain.Aluno;
-
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 public class AlunoResponseDTO{
 	
