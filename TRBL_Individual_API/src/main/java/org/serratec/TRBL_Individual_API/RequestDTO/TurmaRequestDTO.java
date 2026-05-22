@@ -3,8 +3,6 @@ package org.serratec.TRBL_Individual_API.RequestDTO;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

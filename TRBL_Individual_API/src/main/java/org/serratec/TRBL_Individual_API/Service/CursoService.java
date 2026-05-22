@@ -124,10 +124,10 @@ public class CursoService {
 		Curso curso = cursoRepo.findById(id)
 				.orElseThrow(() -> new ValorNaoEncontradoException("Não existe nenhum Curso com o id " + id));
 		
-		curso.setNomeCurso(cursoDTO.getNomeCurso());
+		curso.setNomeCurso(cursoDTO.getNome());
 		curso.setDataInicio(cursoDTO.getDataInicio());
 		curso.setDataFim(cursoDTO.getDataFim());
-		curso.setDescricaoCurso(cursoDTO.getDescricaoCurso());
+		curso.setDescricaoCurso(cursoDTO.getDescricao());
 
 		
 		Curso cursoAtualizado = cursoRepo.save(curso);

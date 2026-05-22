@@ -30,11 +30,11 @@ public class CursoRequestDTO {
 		super();
 	}
 
-	public String getNomeCurso() {
+	public String getNome() {
 		return nome;
 	}
 
-	public void setNomeCurso(String nomeCurso) {
+	public void setNome(String nomeCurso) {
 		this.nome = nomeCurso;
 	}
 
@@ -54,11 +54,11 @@ public class CursoRequestDTO {
 		this.dataFim = dataFim;
 	}
 
-	public String getDescricaoCurso() {
+	public String getDescricao() {
 		return descricaoCurso;
 	}
 
-	public void setDescricaoCurso(String descricaoCurso) {
+	public void setDescricao(String descricaoCurso) {
 		this.descricaoCurso = descricaoCurso;
 	}
 	

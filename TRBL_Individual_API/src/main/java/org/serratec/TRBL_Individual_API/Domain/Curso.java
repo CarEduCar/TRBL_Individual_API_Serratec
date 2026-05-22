@@ -46,10 +46,10 @@ public class Curso {
 	}
 	
 	public Curso(CursoRequestDTO curso){
-		this.nomeCurso = curso.getNomeCurso();
+		this.nomeCurso = curso.getNome();
 		this.dataInicio = curso.getDataInicio();
 		this.dataFim = curso.getDataFim();
-		this.descricaoCurso = curso.getDescricaoCurso();
+		this.descricaoCurso = curso.getDescricao();
 	}
 
 	public Integer getId() {

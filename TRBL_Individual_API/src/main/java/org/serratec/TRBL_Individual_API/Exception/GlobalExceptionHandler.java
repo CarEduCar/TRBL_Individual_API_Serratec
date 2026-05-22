@@ -3,6 +3,8 @@ package org.serratec.TRBL_Individual_API.Exception;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -15,6 +17,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.ConstraintViolationException;
 
 @Schema(description = "Handler de erro global, todos os erros são enviados para aqui onde serão executados")
 
@@ -58,5 +61,32 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		ErroResposta erro = new ErroResposta(HttpStatus.CONFLICT.value(), ex.getMessage());
 		
 		return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
-	}	
+	}
+	
+	@ExceptionHandler(DataIntegrityViolationException.class)
+	public ResponseEntity<ErroResposta> handleDataIntegrity(DataIntegrityViolationException ex) {
+	    ErroResposta erro = new ErroResposta(
+	        HttpStatus.BAD_REQUEST.value(), 
+	        "Erro de integridade: verifique se todos os campos obrigatórios foram preenchidos corretamente."
+	    );
+	    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+	}
+
+	@ExceptionHandler(InvalidDataAccessApiUsageException.class)
+	public ResponseEntity<ErroResposta> handleInvalidId(InvalidDataAccessApiUsageException ex) {
+	    ErroResposta erro = new ErroResposta(
+	        HttpStatus.BAD_REQUEST.value(), 
+	        "ID inválido ou nulo. Verifique os campos de relacionamento (idProfessor, idCurso, idAlunos)."
+	    );
+	    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+	}
+
+	@ExceptionHandler(ConstraintViolationException.class)
+	public ResponseEntity<ErroResposta> handleConstraint(ConstraintViolationException ex) {
+	    ErroResposta erro = new ErroResposta(
+	        HttpStatus.BAD_REQUEST.value(), 
+	        "Erro de validação: " + ex.getMessage()
+	    );
+	    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+	}
 }

@@ -107,21 +107,36 @@ public class TurmaService {
 		})
 	
 	public List<TurmaResponseDTO> criarTurmas(List<TurmaRequestDTO> turmasReq) {
-		List<Turma> turmaPraSalvar = new ArrayList<>();
-		List<TurmaResponseDTO> turmasDTO = new ArrayList<TurmaResponseDTO>();
-		
-		for(TurmaRequestDTO turmaDTO : turmasReq) {
-			turmaPraSalvar.add(new Turma(turmaDTO));
-		}
-		
-		List<Turma> turmasSalvos = turmaRepo.saveAll(turmaPraSalvar);
-		
-		for(Turma turma : turmasSalvos) {
-			turmasDTO.add(new TurmaResponseDTO(turma));
-		}
-		
-		return turmasDTO;	
-	}
+        List<Turma> turmaPraSalvar = new ArrayList<>();
+        List<TurmaResponseDTO> turmasDTO = new ArrayList<>();
+
+        for (TurmaRequestDTO turmaDTO : turmasReq) {
+            Turma turma = new Turma(turmaDTO);
+
+            Professor professor = profRepo.findById(turmaDTO.getIdProfessor())
+                .orElseThrow(() -> new RuntimeException("Professor não encontrado!"));
+            turma.setProfessor(professor);
+
+            Curso curso = cursoRepo.findById(turmaDTO.getIdCurso())
+                .orElseThrow(() -> new RuntimeException("Curso não encontrado!"));
+            turma.setCurso(curso);
+
+            if (turmaDTO.getIdAlunos() != null && !turmaDTO.getIdAlunos().isEmpty()) {
+                List<Aluno> alunos = alunoRepo.findAllById(turmaDTO.getIdAlunos());
+                turma.setAlunos(alunos);
+            }
+
+            turmaPraSalvar.add(turma);
+        }
+
+        List<Turma> turmasSalvas = turmaRepo.saveAll(turmaPraSalvar);
+
+        for (Turma turma : turmasSalvas) {
+            turmasDTO.add(new TurmaResponseDTO(turma));
+        }
+
+        return turmasDTO;
+    }
 	
 	@Operation(
 			summary = "Atualiza os dados de uma turma", 
