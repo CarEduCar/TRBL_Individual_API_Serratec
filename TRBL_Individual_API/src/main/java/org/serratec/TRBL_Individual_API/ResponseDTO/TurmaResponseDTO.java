@@ -1,4 +1,4 @@
-package org.serratec.TRBL_Individual_API.DTO;
+package org.serratec.TRBL_Individual_API.ResponseDTO;
 
 import java.time.LocalDate;
 

@@ -3,10 +3,10 @@ package org.serratec.TRBL_Individual_API.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.serratec.TRBL_Individual_API.DTO.TurmaResponseDTO;
 import org.serratec.TRBL_Individual_API.Domain.Turma;
 import org.serratec.TRBL_Individual_API.Exception.ValorNaoEncontradoException;
 import org.serratec.TRBL_Individual_API.Repository.TurmaRepository;
+import org.serratec.TRBL_Individual_API.ResponseDTO.TurmaResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
