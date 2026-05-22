@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.serratec.TRBL_Individual_API.RequestDTO.AlunoRequestDTO;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,7 +40,7 @@ public class Aluno {
 	@OneToOne(mappedBy = "aluno")
 	private PerfilSocial perfil;
 	
-	@ManyToMany(mappedBy = "aluno")
+	@ManyToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
     private List<Turma> turmas = new ArrayList<>();
 
 	public List<Turma> getTurmas() {
@@ -89,5 +90,7 @@ public class Aluno {
 
 	public void setPerfil(PerfilSocial perfil) {
 		this.perfil = perfil;
-	}	
+	}
+	
+	
 }

@@ -42,6 +42,11 @@ public class PerfilSocial {
 		super();
 	}
 	
+	public PerfilSocial(String classe, BigDecimal renda) {
+		this.classeSocial = classe;
+		this.renda = renda;
+	}
+	
 	public PerfilSocial(PerfilSocialRequestDTO perfil) {
 		this.classeSocial = perfil.getClasseSocial();
 		this.renda = perfil.getRenda();

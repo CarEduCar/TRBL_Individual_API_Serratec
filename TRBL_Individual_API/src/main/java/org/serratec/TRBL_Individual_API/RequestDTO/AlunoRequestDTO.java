@@ -1,5 +1,6 @@
 package org.serratec.TRBL_Individual_API.RequestDTO;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -17,6 +18,28 @@ public class AlunoRequestDTO {
 	@NotNull(message = "A data de nascimento é obrigatória!")
 	private LocalDate dataNasc;	
 	
+	private String classeSocial;
+	
+	private BigDecimal renda;
+	
+	
+	
+	public String getClasseSocial() {
+		return classeSocial;
+	}
+
+	public void setClasseSocial(String classeSocial) {
+		this.classeSocial = classeSocial;
+	}
+
+	public BigDecimal getRenda() {
+		return renda;
+	}
+
+	public void setRenda(BigDecimal renda) {
+		this.renda = renda;
+	}
+
 	public AlunoRequestDTO() {
 		super();
 	}

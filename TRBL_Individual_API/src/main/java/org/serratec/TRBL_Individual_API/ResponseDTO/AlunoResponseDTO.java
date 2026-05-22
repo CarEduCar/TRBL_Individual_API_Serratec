@@ -1,5 +1,7 @@
 package org.serratec.TRBL_Individual_API.ResponseDTO;
 
+import java.math.BigDecimal;
+
 import org.serratec.TRBL_Individual_API.Domain.Aluno;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -8,8 +10,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public class AlunoResponseDTO{
 	
-	Integer id;
-	String nome;
+	private Integer id;
+	private String nome;
+	private String classeSocial;
+	private BigDecimal renda;
 	
 	public AlunoResponseDTO() {
 		super();
@@ -19,6 +23,11 @@ public class AlunoResponseDTO{
 		
 		this.id = aluno.getId();
 		this.nome = aluno.getNomeAluno();
+		
+		if (aluno.getPerfil() != null) {
+			this.classeSocial = aluno.getPerfil().getClasseSocial();
+			this.renda = aluno.getPerfil().getRenda();
+		}
 	}
 
 	public Integer getId() {

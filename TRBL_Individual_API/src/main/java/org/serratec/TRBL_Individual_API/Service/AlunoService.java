@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.serratec.TRBL_Individual_API.Domain.Aluno;
+import org.serratec.TRBL_Individual_API.Domain.PerfilSocial;
 import org.serratec.TRBL_Individual_API.Exception.ValorNaoEncontradoException;
 import org.serratec.TRBL_Individual_API.Repository.AlunoRepository;
 import org.serratec.TRBL_Individual_API.Repository.PerfilSocialRepository;
@@ -82,7 +83,15 @@ public class AlunoService {
 		List<AlunoResponseDTO> alunosDTO = new ArrayList<AlunoResponseDTO>();
 		
 		for(AlunoRequestDTO alunoDTO : alunosReq) {
-			alunosPraSalvar.add(new Aluno(alunoDTO));
+			Aluno aluno = new Aluno(alunoDTO);
+			
+			if (alunoDTO.getClasseSocial() != null) {
+				PerfilSocial perfil = new PerfilSocial(alunoDTO.getClasseSocial(), alunoDTO.getRenda());
+				perfil.setAluno(aluno);
+				aluno.setPerfil(perfil);
+			}
+			
+			alunosPraSalvar.add(aluno);
 		}
 		
 		List<Aluno> alunosSalvos = alunoRepo.saveAll(alunosPraSalvar);
@@ -104,13 +113,24 @@ public class AlunoService {
 			@ApiResponse(responseCode = "400", description = "Erro de validação nos dados enviados ou tipo inválido na URL.")
 		})
 	
-	public AlunoResponseDTO atualizarAluno(Integer id, AlunoRequestDTO alunoDTO) {
+public AlunoResponseDTO atualizarAluno(Integer id, AlunoRequestDTO alunoDTO) {
 		
 		Aluno aluno = alunoRepo.findById(id)
 				.orElseThrow(() -> new ValorNaoEncontradoException("Não existe nenhum aluno com o id " + id));
 		
 		aluno.setNomeAluno(alunoDTO.getNome());
 		aluno.setDataNasc(alunoDTO.getDataNasc());
+		
+		if (alunoDTO.getClasseSocial() != null) {
+			if (aluno.getPerfil() == null) {
+				PerfilSocial novoPerfil = new PerfilSocial(alunoDTO.getClasseSocial(), alunoDTO.getRenda());
+				novoPerfil.setAluno(aluno);
+				aluno.setPerfil(novoPerfil);
+			} else {
+				aluno.getPerfil().setClasseSocial(alunoDTO.getClasseSocial());
+				aluno.getPerfil().setRenda(alunoDTO.getRenda());
+			}
+		}
 		
 		Aluno alunoAtualizado = alunoRepo.save(aluno);
 		
