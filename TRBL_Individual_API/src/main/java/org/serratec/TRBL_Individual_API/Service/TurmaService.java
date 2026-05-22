@@ -6,6 +6,7 @@ import java.util.List;
 import org.serratec.TRBL_Individual_API.Domain.Turma;
 import org.serratec.TRBL_Individual_API.Exception.ValorNaoEncontradoException;
 import org.serratec.TRBL_Individual_API.Repository.TurmaRepository;
+import org.serratec.TRBL_Individual_API.RequestDTO.TurmaRequestDTO;
 import org.serratec.TRBL_Individual_API.ResponseDTO.TurmaResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,11 +42,37 @@ public class TurmaService {
 		return new TurmaResponseDTO(turma);
 	}
 	
-public TurmaResponseDTO buscarTurmaPorId(String codigo) {
+	public TurmaResponseDTO buscarTurmaPorId(String codigo) {
 		
 		Turma turma = turmaRepo.findBycodigoTurma(codigo)
 				.orElseThrow(() -> new ValorNaoEncontradoException("Não existe nenhuma turma com o codigo " + codigo));
 		
 		return new TurmaResponseDTO(turma);
+	}
+	
+	public TurmaResponseDTO atualizarTurma(Integer id, TurmaRequestDTO turmaDTO) {
+		
+		Turma turma = turmaRepo.findById(id)
+				.orElseThrow(() -> new ValorNaoEncontradoException("Não existe nenhum Turma com o id " + id));
+		
+		turma.setCodigoTurma(turmaDTO.getCodigoTurma());
+		turma.setDataInicio(turmaDTO.getDataInicio());
+		turma.setDataFim(turmaDTO.getDataFim());
+		turma.setTamanho(turmaDTO.getTamanho());
+		turma.setAlunos(turmaDTO.getIdAlunos());
+		turma.setProfessor(turmaDTO.getIdProfessor());
+		turma.setCurso(turmaDTO.getIdCurso());
+		
+		Turma turmaAtualizado = turmaRepo.save(turma);
+		
+		return new TurmaResponseDTO(turmaAtualizado);
+	}
+	
+	public void deletarTurma(Integer id) {
+
+		Turma turmaExistente = turmaRepo.findById(id)
+				.orElseThrow(() -> new ValorNaoEncontradoException("Não é possível deletar. Turma com id " + id + " não encontrado."));
+
+		turmaRepo.delete(turmaExistente);
 	}
 }

@@ -9,8 +9,6 @@ public class PerfilSocialDTO {
 	public String classeSocial;
 	public BigDecimal renda;
 	
-	
-	
 	public PerfilSocialDTO() {
 		super();
 	}

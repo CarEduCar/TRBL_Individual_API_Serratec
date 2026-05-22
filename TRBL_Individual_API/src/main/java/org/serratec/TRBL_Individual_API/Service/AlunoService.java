@@ -59,13 +59,13 @@ public class AlunoService {
 	
 	public AlunoResponseDTO atualizarAluno(Integer id, AlunoRequestDTO alunoDTO) {
 		
-		Aluno alunoExistente = alunoRepo.findById(id)
+		Aluno aluno = alunoRepo.findById(id)
 				.orElseThrow(() -> new ValorNaoEncontradoException("Não existe nenhum aluno com o id " + id));
 		
-		alunoExistente.setNomeAluno(alunoDTO.getNome());
-		alunoExistente.setDataNasc(alunoDTO.getDataNasc());
+		aluno.setNomeAluno(alunoDTO.getNome());
+		aluno.setDataNasc(alunoDTO.getDataNasc());
 		
-		Aluno alunoAtualizado = alunoRepo.save(alunoExistente);
+		Aluno alunoAtualizado = alunoRepo.save(aluno);
 		
 		return new AlunoResponseDTO(alunoAtualizado);
 	}
@@ -77,6 +77,4 @@ public class AlunoService {
 
 		alunoRepo.delete(alunoExistente);
 	}
-	
-	
 }
