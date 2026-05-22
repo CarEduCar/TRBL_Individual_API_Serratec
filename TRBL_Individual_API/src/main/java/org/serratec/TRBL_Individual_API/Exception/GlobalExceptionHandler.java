@@ -17,7 +17,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 	
-	
 	@Override
 	public ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatusCode status, WebRequest request) {
@@ -33,22 +32,26 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		return super.handleExceptionInternal(ex, erro, headers, status, request);
 	}
 	
+	@ExceptionHandler(org.springframework.web.method.annotation.MethodArgumentTypeMismatchException.class)
+	public ResponseEntity<ErroResposta> handleTypeMismatch(org.springframework.web.method.annotation.MethodArgumentTypeMismatchException ex) {
+		
+		ErroResposta erro = new ErroResposta(HttpStatus.BAD_REQUEST.value(), "Valor de Entrada Inválido! Verifique e tente novamente");
+		
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+	}
+	
 	@ExceptionHandler(ValorNaoEncontradoException.class)
 	public ResponseEntity<ErroResposta> ValorNaoEncontrado (ValorNaoEncontradoException ex){
 		
-		List<String> erros = new ArrayList<>();
-		
-		ErroResposta erro = new ErroResposta(HttpStatus.NOT_FOUND.value(), "Conteudo não encontrado!");
+		ErroResposta erro = new ErroResposta(HttpStatus.NOT_FOUND.value(), ex.getMessage());
 		
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
 	}	
 	
 	@ExceptionHandler(ValorDuplicadoException.class)
 	public ResponseEntity<ErroResposta> ValorDuplicado (ValorDuplicadoException ex){
-		
-		List<String> erros = new ArrayList<>();
-		
-		ErroResposta erro = new ErroResposta(HttpStatus.NOT_FOUND.value(), "Já existe um Atributo com essa Entrada!");
+
+		ErroResposta erro = new ErroResposta(HttpStatus.CONFLICT.value(), ex.getMessage());
 		
 		return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
 	}	
